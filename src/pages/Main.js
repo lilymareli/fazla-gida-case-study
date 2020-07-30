@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { SafeAreaView, View, Text, Button, FlatList, Alert, Image, Pressable } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Main = (props) => {
 
@@ -35,10 +36,13 @@ const Main = (props) => {
                 name: item.name.first,
                 surname: item.name.last,
                 mail: item.email,
-                picture: item.picture.medium,
+                picture: item.picture.large,
                 mobile: item.cell,
                 phone: item.phone,
                 gender: item.gender,
+                username: item.login.username,
+                city: item.city,
+                country: item.country
                 })}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View style={{ flexDirection: 'row' }}>
@@ -52,7 +56,14 @@ const Main = (props) => {
                             <Text> {item.email} </Text>
                         </View>
                     </View>
-                    <Text> {item.gender} </Text>
+                    {
+                        item.gender == "female" ?
+                        <Icon name="female-outline" size={30}  />
+                    :
+                    <Icon name="male-outline" size={30}  />
+
+                    }
+
                 </View>
             </Pressable>
         )
@@ -61,7 +72,8 @@ const Main = (props) => {
     return (
         <SafeAreaView>
             <View>
-                <Text>Random Users</Text>
+                <Text>Random Users
+                </Text>
                 <FlatList
                     data={userList}
                     renderItem={renderItem}
