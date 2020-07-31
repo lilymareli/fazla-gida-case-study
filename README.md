@@ -7,3 +7,9 @@ Purpose: Create a React Native project with below requirements:
 - [https://randomuser.me] will be used as API.
 - Go to the detail page when clicked a user.
 
+libraries:
+[https://randomuser.me]
+React Navigation: [https://reactnavigation.org/]
+Vector icons: [https://github.com/oblador/react-native-vector-icons]
+
+Thank you!
