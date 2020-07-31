@@ -18,7 +18,7 @@ const Main = (props) => {
     //O sebeple ayrı bir fonksiyon yazıp useEffect ile çağırdım.
     const fetchData = async () => {
         setLoading(true)
-        axios.get("https://randomuser.me/api/?results=9")
+        axios.get("https://randomuser.me/api/?results=10")
             .then(response => {
                 setUserList(response.data.results)
                 setLoading(false)
@@ -50,13 +50,12 @@ const Main = (props) => {
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
-                    borderWidth: 1,
-                    borderColor: 'gray',
                     borderRadius: 5,
                     marginVertical: 5,
                     backgroundColor: 'rgba(255,255,255, 0.8)',
                     padding: 5,
                     width: WIDTH /1.2,
+                    height: HEIGHT / 14
                 }}>
                     <View style={{ flexDirection: 'row' }}>
                         <Image source={{ uri: `${item.picture.thumbnail}` }}
