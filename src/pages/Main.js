@@ -4,6 +4,8 @@ import { SafeAreaView, View, Text, Button, FlatList, Alert, Image, Pressable, Im
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Main = (props) => {
+    const WIDTH = Dimensions.get("window").width
+    const HEIGHT = Dimensions.get("window").height
 
     const [loading, setLoading] = useState(false)
     const [userList, setUserList] = useState([])
@@ -42,8 +44,8 @@ const Main = (props) => {
                     gender: item.gender,
                     //instagram kullanıcı adı gibi kullanmak üzere username aldım
                     username: item.login.username,
-                    city: item.city,
-                    country: item.country
+                    city: item.location.city,
+                    country: item.location.country,
                 })}>
                 <View style={{
                     flexDirection: 'row',
@@ -54,7 +56,7 @@ const Main = (props) => {
                     marginVertical: 5,
                     backgroundColor: 'rgba(255,255,255, 0.8)',
                     padding: 5,
-                    width: Dimensions.get('window').width /1.2,
+                    width: WIDTH /1.2,
                 }}>
                     <View style={{ flexDirection: 'row' }}>
                         <Image source={{ uri: `${item.picture.thumbnail}` }}
@@ -64,7 +66,7 @@ const Main = (props) => {
                                 <Text style={{fontSize: 16}}>{item.name.first} </Text>
                                 <Text style={{fontSize: 16}}>{item.name.last} </Text>
                             </View>
-                            <Text> {item.email} </Text>
+                            <Text>{item.email}</Text>
                         </View>
                     </View>
                     {
@@ -85,8 +87,8 @@ const Main = (props) => {
             <ImageBackground source={require("../assets/sky.jpg")}
                 style={{
                     flex: 1,
-                    width: Dimensions.get('window').width,
-                    height: Dimensions.get('window').height
+                    width: WIDTH,
+                    height: HEIGHT
                 }}>
                 <View style={{ flex: 1, alignItems: 'center' }}>
 
