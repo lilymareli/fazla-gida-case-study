@@ -13,11 +13,11 @@ Purpose: Create a React Native project with below requirements:
 
 libraries:
 
-[https://randomuser.me]
+- [https://randomuser.me]
 
-React Navigation: [https://reactnavigation.org/]
+- React Navigation [https://reactnavigation.org/]
 
-Vector icons: [https://github.com/oblador/react-native-vector-icons]
+- Vector icons [https://github.com/oblador/react-native-vector-icons]
 
 
 Thank you!
