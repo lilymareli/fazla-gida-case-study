@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { SafeAreaView, View, Text, Button, Linking, Image, Alert, ImageBackground, Dimensions, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../styles'
+import UserDetail from '../components/UserDetail'
 
 const Details = (props) => {
+
     const WIDTH = Dimensions.get("window").width
     const HEIGHT = Dimensions.get("window").height
 
@@ -15,6 +17,11 @@ const Details = (props) => {
     function pressEmail() {
         const email = "mailto:" + props.route.params.email
         Linking.openURL(email)
+    }
+
+    function pressMap() {
+        const map = `https://www.google.com/maps/search/?api=1&query=${props.route.params.city},+${props.route.params.country}`
+        Linking.openURL(map)
     }
 
     function pressFacebook() {
@@ -69,76 +76,24 @@ const Details = (props) => {
                             source={{ uri: (`${props.route.params.picture}`) }}
                             style={styles.Details.image}
                         />
-
-                        <View style={styles.Details.textContainer}>
-                            <Text style={{ fontSize: 21 }} >{props.route.params.name} </Text>
-                            <Text style={{ fontSize: 21 }} >{props.route.params.surname}</Text>
-                        </View>
-
-                        <View style={styles.Details.contactContainer} >
-
-                            <View style={{ alignItems: 'flex-start' }} >
-
-                                <Pressable
-                                    onPress={() => pressEmail()}
-                                    style={styles.Details.contacts}
-                                >
-                                    <Icon name="mail-outline" size={20} style={{ alignSelf: 'center' }} />
-                                    <Text> {props.route.params.mail}</Text>
-                                </Pressable>
-
-                                <Pressable
-                                    onPress={() => pressCall()}
-                                    style={styles.Details.contacts} >
-                                    <Icon name="call-outline" size={20} style={{ alignSelf: 'center' }} />
-                                    <Text> {props.route.params.phone}</Text>
-                                </Pressable>
-
-                                <Pressable
-                                    onPress={() => Linking.openURL(`https://www.google.com/maps/search/?api=1&query=${props.route.params.city},+${props.route.params.country}`)}
-                                    style={styles.Details.contacts} >
-                                    <Icon name="location-outline" size={20} style={{ alignSelf: 'center' }} />
-                                    <Text>{props.route.params.city}, </Text>
-                                    <Text>{props.route.params.country}</Text>
-                                </Pressable>
-
-                            </View>
-
-                            {
-                                props.route.params.gender == "female" ?
-                                    <Icon name="female-outline" size={30} style={{ alignSelf: 'center' }} />
-                                    :
-                                    <Icon name="male-outline" size={30} style={{ alignSelf: 'center' }} />
-                            }
-
-                        </View>
-
-                        <View style={styles.Details.logoContainer}>
-                            <Icon
-                                name="logo-facebook"
-                                size={30}
-                                color="#3b5998"
-                                onPress={() => pressFacebook()}
-                                style={{ margin: 5 }}
-                            />
-                            <Icon
-                                name="logo-instagram"
-                                size={30}
-                                color="#E1306C"
-                                onPress={() => pressInstagram()}
-                                style={{ margin: 5 }}
-                            />
-                            <Icon
-                                name="logo-twitter"
-                                size={30}
-                                color="#00acee"
-                                onPress={() => pressTwitter()}
-                                style={{ margin: 5 }}
-                            />
-                        </View>
+                        <UserDetail
+                            name={props.route.params.name}
+                            surname={props.route.params.surname}
+                            email={props.route.params.mail}
+                            phone={props.route.params.phone}
+                            city={props.route.params.city}
+                            country={props.route.params.country}
+                            gender={props.route.params.gender}
+                            onPressEmail={() => pressEmail()}
+                            onPressCall={() => pressCall()}
+                            onPressMap={() => pressMap()}
+                            onPressFacebook={() => pressFacebook()}
+                            onPressInstagram={() => pressInstagram()}
+                            onPressTwitter={() => pressTwitter()}
+                        />
 
                     </View>
-                    
+
                 </View>
             </ImageBackground>
         </SafeAreaView >
