@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { SafeAreaView, View, Text, Button, Linking, Image, Alert } from 'react-native'
+import { SafeAreaView, View, Text, Button, Linking, Image, Alert, ImageBackground, Dimensions } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Details = (props) => {
     /*
@@ -36,7 +37,17 @@ const Details = (props) => {
    
     return (
         <SafeAreaView>
+            <ImageBackground source={require("../assets/night.png")} 
+            style={{width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height /3
+            }} >
             <View>
+            
+            <Icon name="chevron-back-outline" size={35} color="#ffffff" 
+            onPress={() => props.navigation.goBack()} 
+            style={{margin: 10}}
+            />
+
                 <Text>Details</Text>
                 <Image source={{ uri: (`${props.route.params.picture}`) }}
                 style={{height: 200, width: 200, borderRadius:200}} />
@@ -50,6 +61,7 @@ const Details = (props) => {
         
 
         </View>
+        </ImageBackground>
     </SafeAreaView >
     )
 }
