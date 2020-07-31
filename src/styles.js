@@ -87,7 +87,8 @@ const styles = {
             justifyContent: 'space-between',
             width: 170, 
             alignItems: 'center', 
-            marginTop: 40
+            marginTop: 40,
+            alignSelf: 'center'
         },
     })
 }
